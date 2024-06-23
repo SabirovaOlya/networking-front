@@ -120,7 +120,7 @@ const addNewTask = (taskName) => {
         return response.json();
     })
     .then(data => {
-        generateTemplate(taskName); 
+        generateTemplate(taskName, data?.id); 
         console.log('Success:', data);
     })
     .catch(error => {
