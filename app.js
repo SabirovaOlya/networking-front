@@ -3,7 +3,7 @@ const list = document.querySelector(".todos");
 const search = document.querySelector(".search input");
 // variables
 let task_type = "1";
-const apiURL = 'http://16.170.246.149/api';
+const apiURL = 'https://uldaulet.araltech.tech/api';
 
 // add new todos
 const generateTemplate = (todo, id) => {
