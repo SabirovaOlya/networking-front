@@ -30,6 +30,7 @@ addForm.addEventListener("submit", (e) => {
 list.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete")) {
         const id = e.target.getAttribute('data-id');
+        console.log(id, 'id');
         deleteTask(id, e.target.parentElement);
     }
 });
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabs = document.querySelectorAll('#pills-tab button');
 
     // Initial data fetch for the default active tab
-    const initialTaskType = document.querySelector('.nav-link.active').getAttribute('data-task-type');
+    const initialTaskType = document.querySelector('.nav-link.active').getAttribute('data-id');
     getData(initialTaskType);
 
     tabs.forEach(tab => {
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
             tab.setAttribute('aria-selected', 'true');
 
             // Fetch data corresponding to the clicked tab
-            const taskType = tab.getAttribute('data-task-type');
+            const taskType = tab.getAttribute('data-id');
             getData(taskType);
         });
     });
@@ -102,8 +103,9 @@ const getData = (taskType) => {
 
 // Function to handle POST request
 const addNewTask = (taskName) => {
-    const initialTaskType = document.querySelector('.nav-link.active').getAttribute('data-task-type');
+    const initialTaskType = document.querySelector('.nav-link.active').getAttribute('data-id');
     task_type = initialTaskType
+    console.log('type', task_type);
     fetch(`${apiURL}/task/`, {
         method: 'POST',
         headers: {
